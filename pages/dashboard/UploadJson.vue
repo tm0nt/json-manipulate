@@ -8,7 +8,7 @@
               accept=".jsonc, .json"
               @change="handleFileUpload"
               ref="fileInput"
-              style="display: none;"
+              style="display: none"
             />
             <v-btn
               label="Novo"
@@ -52,12 +52,14 @@
                 :title="key"
               >
                 <template v-slot:text>
-                  <v-row
-                    v-for="(fieldValue, fieldName) in value"
-                    :key="fieldName"
-                  >
-                    <v-col cols="6">
+                  <v-row>
+                    <v-col
+                      cols="6"
+                      v-for="(fieldValue, fieldName) in value"
+                      :key="fieldName"
+                    >
                       <v-text-field
+                        class="mt-n4 mb-n5"
                         :label="fieldName"
                         v-model="value[fieldName]"
                         @input="updatePreview"
@@ -155,7 +157,9 @@
     for (const key in comments.value) {
       const [section, field] = key.split(".");
       if (dataWithComments[section] && dataWithComments[section][field]) {
-        dataWithComments[section][field] = `${dataWithComments[section][field]} // ${comments.value[key]}`;
+        dataWithComments[section][
+          field
+        ] = `${dataWithComments[section][field]} // ${comments.value[key]}`;
       }
     }
     // Aqui você implementaria a lógica para salvar o JSON em um arquivo .json

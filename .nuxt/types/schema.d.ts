@@ -1,66 +1,46 @@
-import { NuxtModule, RuntimeConfig } from "nuxt/schema";
-declare module "nuxt/schema" {
+import { NuxtModule, RuntimeConfig } from 'nuxt/schema'
+declare module 'nuxt/schema' {
   interface NuxtConfig {
-    ["pwa"]?: typeof import("@kevinmarrec/nuxt-pwa").default extends NuxtModule<
-      infer O
-    >
-      ? Partial<O>
-      : Record<string, any>;
-    ["devtools"]?: typeof import("@nuxt/devtools").default extends NuxtModule<
-      infer O
-    >
-      ? Partial<O>
-      : Record<string, any>;
-    ["telemetry"]?: typeof import("@nuxt/telemetry").default extends NuxtModule<
-      infer O
-    >
-      ? Partial<O>
-      : Record<string, any>;
-    modules?: (
-      | undefined
-      | null
-      | false
-      | NuxtModule
-      | string
-      | [NuxtModule | string, Record<string, any>]
-      | ["@kevinmarrec/nuxt-pwa", Exclude<NuxtConfig["pwa"], boolean>]
-      | ["@nuxt/devtools", Exclude<NuxtConfig["devtools"], boolean>]
-      | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>]
-    )[];
+    ["pwa"]?: typeof import("@kevinmarrec/nuxt-pwa").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    ["devtools"]?: typeof import("@nuxt/devtools").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    ["telemetry"]?: typeof import("@nuxt/telemetry").default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>
+    modules?: (undefined | null | false | NuxtModule | string | [NuxtModule | string, Record<string, any>] | ["@kevinmarrec/nuxt-pwa", Exclude<NuxtConfig["pwa"], boolean>] | ["@nuxt/devtools", Exclude<NuxtConfig["devtools"], boolean>] | ["@nuxt/telemetry", Exclude<NuxtConfig["telemetry"], boolean>])[],
   }
   interface RuntimeConfig {
-    app: {
-      baseURL: string;
+   app: {
+      baseURL: string,
 
-      buildAssetsDir: string;
+      buildAssetsDir: string,
 
-      cdnURL: string;
-    };
+      cdnURL: string,
+   },
   }
   interface PublicRuntimeConfig {
-    pwaManifest: {
-      name: string;
+   pwaManifest: {
+      name: string,
 
-      short_name: string;
+      short_name: string,
 
-      description: any;
+      description: any,
 
-      lang: string;
+      lang: string,
 
-      start_url: string;
+      start_url: string,
 
-      display: string;
+      display: string,
 
-      background_color: string;
+      background_color: string,
 
-      theme_color: string;
+      theme_color: string,
 
-      icons: Array<{}>;
-    };
+      icons: Array<{
+
+      }>,
+   },
   }
 }
-declare module "vue" {
-  interface ComponentCustomProperties {
-    $config: RuntimeConfig;
-  }
-}
+declare module 'vue' {
+        interface ComponentCustomProperties {
+          $config: RuntimeConfig
+        }
+      }
